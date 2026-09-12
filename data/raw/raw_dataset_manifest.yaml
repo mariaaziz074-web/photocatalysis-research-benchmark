@@ -1,0 +1,7 @@
+n_columns: 33
+n_records: 520
+raw_file: raw_photocatalysis_dataset.csv
+sha256: 2d9cb48d905ebf6a3ab31d953e25f9afcc598df73e162e40bf43cc27fb4864ea
+unique_catalysts: 13
+unique_dois: 52
+unique_dyes: 10
