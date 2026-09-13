@@ -1,0 +1,40 @@
+# Core dependencies
+pandas>=2.0.0
+numpy>=1.24.0
+scipy>=1.11.0
+pyyaml>=6.0
+
+# Machine learning
+scikit-learn>=1.3.0
+xgboost>=2.0.0
+lightgbm>=4.1.0
+mapie>=0.7.0
+
+# Statistical analysis
+statsmodels>=0.14.0
+
+# Interpretability
+shap>=0.43.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.17.0
+
+# Data handling
+openpyxl>=3.1.0
+xlrd>=2.0.1
+
+# PDF extraction
+tabula-py>=2.8.0
+pdfplumber>=0.10.0
+PyPDF2>=3.0.0
+
+# Chemistry (via our package)
+git+https://github.com/mariaaziz074-web/chem-research-data.git
+
+# Development
+pytest>=7.4.0
+pytest-cov>=4.1.0
+jupyter>=1.0.0
+black>=23.0.0
