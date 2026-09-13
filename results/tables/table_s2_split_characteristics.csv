@@ -1,0 +1,6 @@
+Split Strategy,Train Size,Test Size,Description,Avg RMSE,Avg R2,Best Model
+random,415,104,80/20 random split,10.33,0.831,XGBoost
+catalyst_holdout,440,79,"Held out: Au/TiO2, F-doped",12.48,0.816,XGBoost
+dye_holdout,415,104,"Held out: Direct Blue 15, Rhodamine B",10.30,0.866,XGBoost
+paper_holdout,419,100,10 papers held out,10.45,0.854,XGBoost
+time_based,415,104,Chronological split,10.66,0.820,XGBoost
