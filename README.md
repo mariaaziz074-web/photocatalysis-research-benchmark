@@ -15,8 +15,8 @@ Create a curated, provenance-tracked dataset of photocatalytic dye degradation e
 
 ## 📊 Dataset Overview
 
-- **Size:** 500+ validated data points
-- **Sources:** 50+ peer-reviewed papers (2015-2024)
+- **Size:** 519 experimental measurements from 
+- **Sources:** 52 peer-reviewed publications (2015–2024).
 - **Coverage:** TiO₂, ZnO, g-C₃N₄ photocatalysts
 - **Pollutants:** Methylene Blue, Rhodamine B, Methyl Orange, and others
 - **Provenance:** 100% traceable to source DOI/table/page
