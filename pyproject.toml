@@ -1,0 +1,72 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "photocatalysis-benchmark"
+version = "0.1.0"
+description = "Publication-quality photocatalysis dataset and ML benchmark for Scientific Data"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+    {name = "Maria Aziz", email = "your.email@example.com"}
+]
+keywords = [
+    "photocatalysis",
+    "machine-learning", 
+    "computational-chemistry",
+    "benchmark",
+    "dataset",
+    "water-treatment",
+    "catalysis"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Chemistry",
+]
+
+dependencies = [
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+    "scikit-learn>=1.3.0",
+    "xgboost>=2.0.0",
+    "lightgbm>=4.1.0",
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+    "scipy>=1.11.0",
+    "statsmodels>=0.14.0",
+    "shap>=0.43.0",
+    "openpyxl>=3.1.0",
+    "tabula-py>=2.8.0",
+    "pdfplumber>=0.10.0",
+    "PyPDF2>=3.0.0",
+    "pyyaml>=6.0",
+    "chemdata @ git+https://github.com/mariaaziz074-web/chem-research-data.git",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "jupyter>=1.0.0",
+]
+uncertainty = [
+    "mapie>=0.7.0",
+]
+viz = [
+    "plotly>=5.17.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]

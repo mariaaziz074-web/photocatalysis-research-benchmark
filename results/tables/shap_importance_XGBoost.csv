@@ -1,0 +1,10 @@
+Feature,Mean_Abs_SHAP
+light_intensity_mwcm2,14.834307
+reaction_time_min,14.367387
+catalyst_dosage_gl,5.309823
+initial_dye_conc_mgl,5.2622447
+bandgap_ev,2.0864418
+surface_area_m2g,1.8154608
+ph,0.91107774
+dye_molecular_weight,0.61812437
+temperature_c,0.11049913

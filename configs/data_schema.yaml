@@ -1,0 +1,167 @@
+# Photocatalysis Dataset Schema
+# Defines expected columns, types, and validation rules
+
+dataset_info:
+  name: "Photocatalysis Dye Degradation Dataset"
+  version: "1.0.0"
+  description: "Curated dataset of photocatalytic dye degradation experiments from literature"
+  license: "CC-BY-4.0"
+  target_journal: "Scientific Data"
+
+required_fields:
+  # Provenance (CRITICAL - every row must have)
+  - data_id                    # Unique identifier
+  - source_doi                 # Paper DOI
+  - source_citation            # Full citation
+  - source_table               # Table number
+  - source_page                # Page number
+  - extraction_date            # When data was extracted
+  - quality_tier               # 1=high, 2=medium, 3=low
+
+  # Catalyst information
+  - catalyst_name              # Common name (e.g., TiO2)
+  - catalyst_formula           # Chemical formula
+  - catalyst_type              # semiconductor/metal-oxide/composite
+  
+  # Dye information
+  - dye_name                   # Common name
+  - dye_formula                # Chemical formula (if available)
+  - dye_smiles                 # SMILES string (if available)
+  
+  # Experimental conditions
+  - catalyst_loading_g_L       # Catalyst concentration (g/L)
+  - dye_concentration_mg_L     # Initial dye concentration (mg/L)
+  - solution_volume_mL         # Solution volume
+  - pH                         # Solution pH
+  - temperature_C              # Temperature (°C)
+  - reaction_time_min          # Total reaction time (minutes)
+  
+  # Light source
+  - light_source_type          # UV/Visible/Solar/LED
+  - light_power_W              # Light source power (if reported)
+  
+  # Results
+  - degradation_percent        # Degradation percentage (%)
+  - degradation_time_min       # Time to reach this degradation
+
+optional_fields:
+  # Additional catalyst properties
+  - catalyst_synthesis         # Synthesis method
+  - catalyst_bandgap_eV        # Band gap energy
+  - catalyst_surface_area_m2_g # BET surface area
+  - catalyst_particle_size_nm  # Average particle size
+  - catalyst_dopant            # Dopant type (if any)
+  - catalyst_calcination_C     # Calcination temperature
+  
+  # Additional dye properties
+  - dye_molecular_weight       # g/mol
+  - dye_max_wavelength_nm      # λmax
+  
+  # Additional conditions
+  - stirring_rpm               # Stirring rate
+  - O2_purging                 # Yes/No
+  - dark_equilibration_min     # Dark adsorption time
+  - initial_adsorption_percent # Dark adsorption %
+  
+  # Kinetics
+  - rate_constant              # Pseudo-first-order rate constant
+  - rate_constant_units        # Units for rate constant
+  - kinetic_model              # Model used
+  
+  # Additional results
+  - COD_removal_percent        # Chemical oxygen demand removal
+  - TOC_removal_percent        # Total organic carbon removal
+  - mineralization_percent     # Complete mineralization
+  
+  # Reusability
+  - cycle_number               # Reuse cycle (1, 2, 3, etc.)
+  - reusability_loss_percent   # Activity loss after reuse
+
+validation_rules:
+  degradation_percent:
+    type: float
+    min: 0
+    max: 100
+    
+  pH:
+    type: float
+    min: 0
+    max: 14
+    
+  temperature_C:
+    type: float
+    min: -50
+    max: 200
+    
+  catalyst_loading_g_L:
+    type: float
+    min: 0
+    max: 50
+    
+  dye_concentration_mg_L:
+    type: float
+    min: 0
+    max: 1000
+    
+  reaction_time_min:
+    type: float
+    min: 0
+    max: 1440  # Max 24 hours
+    
+  catalyst_bandgap_eV:
+    type: float
+    min: 0.5
+    max: 6.0
+
+categorical_fields:
+  catalyst_type:
+    allowed_values:
+      - semiconductor
+      - metal-oxide
+      - composite
+      - carbon-based
+      - other
+      
+  dye_name:
+    common_values:
+      - Methylene Blue
+      - Rhodamine B
+      - Methyl Orange
+      - Congo Red
+      - Malachite Green
+      - Acid Orange 7
+      - Crystal Violet
+      
+  light_source_type:
+    allowed_values:
+      - UV
+      - Visible
+      - Solar
+      - LED
+      - Xenon lamp
+      - Mercury lamp
+      
+  quality_tier:
+    allowed_values:
+      - 1  # High confidence
+      - 2  # Medium confidence
+      - 3  # Low confidence
+
+provenance_format:
+  source_doi:
+    pattern: "^10\\.\\d{4,}/.*$"
+    example: "10.1016/j.chemosphere.2023.12345"
+    
+  source_citation:
+    required_elements:
+      - author
+      - title
+      - journal
+      - year
+      - volume
+      - pages
+    format: "Author et al. (Year). Title. Journal, Volume(Issue), Pages."
+    
+  data_id:
+    format: "PC-YYYY-NNN"  # PC = Photocatalysis, YYYY = year, NNN = sequential
+    example: "PC-2024-001"

@@ -1,0 +1,91 @@
+# Validation Rules for Photocatalysis Dataset
+
+chemical_validation:
+  catalyst_formulas:
+    validate: true
+    method: "rdkit"  # Use RDKit for validation
+    allow_missing: false
+    normalize: true
+    
+  dye_smiles:
+    validate: true
+    method: "rdkit"
+    allow_missing: true  # Not all papers report SMILES
+    canonicalize: true
+
+unit_normalization:
+  concentration:
+    source_units:
+      - "mg/L"
+      - "ppm"
+      - "mM"
+      - "μM"
+      - "g/L"
+    target_unit: "mg/L"
+    
+  time:
+    source_units:
+      - "min"
+      - "h"
+      - "s"
+    target_unit: "min"
+    
+  temperature:
+    source_units:
+      - "C"
+      - "K"
+      - "F"
+    target_unit: "C"
+    
+  energy:
+    source_units:
+      - "eV"
+      - "kcal/mol"
+      - "kJ/mol"
+    target_unit: "eV"
+
+quality_control:
+  outlier_detection:
+    methods:
+      - zscore
+      - iqr
+      - isolation_forest
+    zscore_threshold: 3.0
+    iqr_multiplier: 1.5
+    isolation_forest_contamination: 0.05
+    
+  duplicate_detection:
+    check_chemical_duplicates: true
+    check_experimental_duplicates: true
+    tolerance:
+      catalyst_loading_g_L: 0.1
+      dye_concentration_mg_L: 1.0
+      pH: 0.2
+      temperature_C: 2.0
+      reaction_time_min: 5.0
+      
+  missing_data:
+    max_missing_per_row: 0.3  # Max 30% missing values per row
+    critical_fields_no_missing:
+      - data_id
+      - source_doi
+      - catalyst_name
+      - dye_name
+      - degradation_percent
+      
+quality_tiers:
+  tier_1_criteria:
+    - complete_experimental_conditions
+    - catalyst_characterization_available
+    - kinetic_data_available
+    - error_bars_reported
+    - reproducibility_verified
+    
+  tier_2_criteria:
+    - complete_experimental_conditions
+    - some_characterization
+    - single_measurement
+    
+  tier_3_criteria:
+    - minimal_conditions_reported
+    - missing_critical_parameters

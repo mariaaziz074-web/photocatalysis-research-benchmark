@@ -1,0 +1,111 @@
+# ML Model Configuration for Benchmarking
+
+random_seed: 42
+
+models:
+  ridge:
+    name: "Ridge Regression"
+    class: "sklearn.linear_model.Ridge"
+    hyperparameters:
+      alpha: [0.1, 1.0, 10.0, 100.0]
+    cv_folds: 5
+    
+  random_forest:
+    name: "Random Forest"
+    class: "sklearn.ensemble.RandomForestRegressor"
+    hyperparameters:
+      n_estimators: [100, 200, 300]
+      max_depth: [10, 20, 30, null]
+      min_samples_split: [2, 5, 10]
+      min_samples_leaf: [1, 2, 4]
+    cv_folds: 5
+    n_jobs: -1
+    
+  xgboost:
+    name: "XGBoost"
+    class: "xgboost.XGBRegressor"
+    hyperparameters:
+      n_estimators: [100, 200, 300]
+      max_depth: [3, 5, 7]
+      learning_rate: [0.01, 0.05, 0.1]
+      subsample: [0.8, 1.0]
+      colsample_bytree: [0.8, 1.0]
+    cv_folds: 5
+    n_jobs: -1
+    
+  neural_network:
+    name: "Neural Network"
+    class: "sklearn.neural_network.MLPRegressor"
+    hyperparameters:
+      hidden_layer_sizes: [[64], [64, 32], [128, 64]]
+      activation: ["relu", "tanh"]
+      alpha: [0.0001, 0.001, 0.01]
+      learning_rate_init: [0.001, 0.01]
+    cv_folds: 5
+    max_iter: 1000
+
+splitting_strategies:
+  random:
+    name: "Random Split"
+    method: "random"
+    test_size: 0.2
+    stratify: null
+    
+  catalyst_holdout:
+    name: "Catalyst Held-Out"
+    method: "group_holdout"
+    group_column: "catalyst_name"
+    test_groups: 0.2  # 20% of unique catalysts
+    
+  dye_holdout:
+    name: "Dye Held-Out"
+    method: "group_holdout"
+    group_column: "dye_name"
+    test_groups: 0.2
+    
+  paper_holdout:
+    name: "Paper Held-Out"
+    method: "group_holdout"
+    group_column: "source_doi"
+    test_groups: 0.2
+    
+  time_based:
+    name: "Time-Based Split"
+    method: "temporal"
+    time_column: "extraction_date"
+    test_size: 0.2  # Most recent 20%
+
+features:
+  numerical:
+    - catalyst_loading_g_L
+    - dye_concentration_mg_L
+    - pH
+    - temperature_C
+    - reaction_time_min
+    - light_power_W
+    - catalyst_bandgap_eV
+    - catalyst_surface_area_m2_g
+    
+  categorical:
+    - catalyst_type
+    - light_source_type
+    - dye_name
+    
+  target:
+    - degradation_percent
+
+preprocessing:
+  numerical_scaling: "StandardScaler"
+  categorical_encoding: "OneHotEncoder"
+  handle_missing: "median"
+
+evaluation_metrics:
+  - rmse          # Root Mean Squared Error
+  - mae           # Mean Absolute Error
+  - r2            # R-squared
+  - mape          # Mean Absolute Percentage Error
+  - spearman_rho  # Spearman correlation
+
+uncertainty_quantification:
+  method: "conformal_prediction"
+  confidence_level: 0.9

@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this dataset or software, please cite it as below."
+authors:
+  - family-names: "Aziz"
+    given-names: "Maria"
+title: "Photocatalysis Research Benchmark: A Curated Dataset for ML Evaluation"
+version: 0.1.0
+date-released: 2026-09-13
+url: "https://github.com/mariaaziz074-web/photocatalysis-research-benchmark"
+repository-code: "https://github.com/mariaaziz074-web/photocatalysis-research-benchmark"
+keywords:
+  - photocatalysis
+  - machine-learning
+  - computational-chemistry
+  - benchmark
+  - dataset
+  - water-treatment
+  - dye-degradation
+license: MIT
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Aziz"
+      given-names: "Maria"
+  title: "A Curated Dataset and Benchmark for Photocatalytic Dye Degradation with Machine Learning Evaluation"
+  journal: "Scientific Data"
+  year: 2026  status: "in preparation"
