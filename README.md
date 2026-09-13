@@ -1,5 +1,7 @@
 # Photocatalysis Research Benchmark
+## Manuscript
 
+A draft Data Descriptor manuscript (`manuscript/data_descriptor.md`) is provided for transparency. This is a **working draft** prepared for submission to *Scientific Data* (Nature Portfolio). The dataset, code, and benchmark results are public under CC BY 4.0 license.
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 

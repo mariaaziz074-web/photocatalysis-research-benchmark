@@ -1,3 +1,14 @@
+> **DRAFT MANUSCRIPT - NOT YET SUBMITTED**  
+> This is a working draft Data Descriptor prepared for the photocatalysis benchmark dataset.  
+> Dataset, code, and results are publicly available under CC BY 4.0 license.  
+> Manuscript provided for research transparency and reproducibility.  
+> Last updated: September 13, 2026
+> **DRAFT MANUSCRIPT - NOT YET SUBMITTED**  
+> This is a working draft prepared for the photocatalysis benchmark dataset.  
+> Data and code are publicly available under CC BY 4.0 license.  
+> Manuscript is provided for transparency and reproducibility.  
+> Last updated: September 13, 2026
+
 # A Curated Photocatalysis Dataset for Leakage-Resistant Machine Learning Benchmarking
 
 **Date**: September 13, 2026
